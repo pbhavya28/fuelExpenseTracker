@@ -10,7 +10,6 @@ const app = express();
 
 app.use(express.json());
 
-
 app.use(cors({
   origin: 'http://localhost:5173', 
   credentials: true
@@ -37,7 +36,7 @@ let url = `mongodb+srv://${config.username}:${config.userpassword}@${config.dbna
 
 mongoose
   .connect(url)
-  .then(() => console.log("DB Connected"))
+  .then(() => console.log("DB Connected!!"))
   .catch((error) => console.log("Error", error));
 
 // Schema & Model
