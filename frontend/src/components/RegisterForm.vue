@@ -57,7 +57,7 @@
   
   const submitForm = async () => {
     try {
-      await axios.post('http://localhost:5050/data', user)
+      await axios.post('http://localhost:3030/data', user)
       message.value = 'Registration successful! Redirecting to login...'
       setTimeout(() => {
         router.push('/login')

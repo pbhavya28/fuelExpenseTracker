@@ -2,8 +2,8 @@
   "port": 3030,
   "host": "localhost",
   "username": "admin",
-  "userpassword": "GVZIadoZElrYPeLj",
-  "userstring": "gnenuri",
+  "userpassword": "admin",
+  "userstring": "ar5i3kk",
   "clustername": "valtech",
-  "dbname": "valtechDB"
+  "dbname": "valtech"
 }

@@ -32,7 +32,8 @@ app.use(session({
 }));
 
 
-const url = 'mongodb+srv://admin:admin@valtech.ar5i3kk.mongodb.net/?retryWrites=true&w=majority&appName=Valtech';
+// const url = 'mongodb+srv://admin:admin@valtech.ar5i3kk.mongodb.net/?retryWrites=true&w=majority&appName=Valtech';
+let url = `mongodb+srv://${config.username}:${config.userpassword}@${config.dbname}.${config.userstring}.mongodb.net/${config.dbname}?retryWrites=true&w=majority&appName=Valtech`;
 
 mongoose
   .connect(url)
