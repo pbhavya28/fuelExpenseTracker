@@ -1,0 +1,7 @@
+npm init -y
+npm i express mongoose cors 
+
+create a file called index.js
+copy paste the code we did yesterday in step5
+
+copy paste the utils.js too
