@@ -69,6 +69,60 @@ const Vehicle = mongoose.model(
     fuelType: { type: String, enum: ["petrol", "diesel"] },
   })
 );
+ 
+const FuelLog = mongoose.model(
+  "FuelLog",
+  new Schema({
+    vehicleId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Vehicle",
+      required: true,
+    },
+    liters: { type: Number, required: true },
+    pricePerLiter: { type: Number, required: true },
+    distance: { type: Number, required: true },
+    price: { type: Number, required: true },
+    mileage: { type: Number, required: false },
+    date: { type: Date, required: true },
+  })
+);
+ 
+app.post("/fuel-log", async (req, res) => {
+  try {
+    const { vehicleId, liters, pricePerLiter, distance, date } = req.body;
+ 
+    const price = liters * pricePerLiter;
+    const mileage = distance / liters;
+ 
+    const fuelLog = new FuelLog({
+      vehicleId,
+      liters,
+      pricePerLiter,
+      distance,
+      price,
+      mileage,
+      date,
+    });
+ 
+    const dbRes = await fuelLog.save();
+    res.send({ message: "Fuel log added", fuelLog: dbRes });
+  } catch (error) {
+    console.error("Error adding fuel log:", error);
+    res.status(500).json({ message: "Error adding fuel log", error });
+  }
+});
+ 
+app.get("/fuel-log/:vehicleId", async (req, res) => {
+  try {
+    const { vehicleId } = req.params;
+    const fuelLogs = await FuelLog.find({ vehicleId }).sort({ date: -1 });
+    res.json(fuelLogs);
+  } catch (error) {
+    console.error("Error fetching fuel logs:", error);
+    res.status(500).json({ message: "Error fetching fuel logs", error });
+  }
+});
+
 
 app.post("/data", async (req, res) => {
   try {
@@ -158,21 +212,7 @@ app.delete("/edit/:uid", (req, res) => {
     .catch((error) => errorHandler(error, req, res));
 });
 
-// app.get('/test-insert', async (req, res) => {
-//   try {
-//     const hashedPassword = bcrypt.hashSync("bhavya123", 10);
-//     const user = new User({
-//       firstName: "Bhavya",
-//       lastName: "Patel",
-//       email: "testuser@example.com",
-//       password: hashedPassword
-//     });
-//     const savedUser = await user.save();
-//     res.send({ message: "Test user inserted", user: savedUser });
-//   } catch (err) {
-//     res.status(500).send({ error: err.message });
-//   }
-// });
+
 
 app.get("/profile", (req, res) => {
   if (!req.session.user) {
