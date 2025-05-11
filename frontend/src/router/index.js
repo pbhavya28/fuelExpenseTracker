@@ -1,12 +1,9 @@
-
-
-
 import { createRouter, createWebHistory } from "vue-router";
 import LoginPage from "../pages/LoginPage.vue";
 import RegisterPage from "../pages/RegisterPage.vue";
 import HomePage from "../pages/HomePage.vue";
 import AddVehicle from "../pages/AddVehicle.vue";
-import FuelLogPage from "../pages/FuelLogPage.vue";  // Import the FuelLogPage component
+import FuelLogPage from "../pages/FuelLogPage.vue";  
 
 const routes = [
   { path: "/", redirect: "/login" },
