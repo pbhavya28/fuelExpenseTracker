@@ -124,6 +124,8 @@ app.get("/fuel-log/:vehicleId", async (req, res) => {
 });
 
 
+
+
 app.post("/data", async (req, res) => {
   try {
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
@@ -222,6 +224,8 @@ app.get("/profile", (req, res) => {
   res.send({ userinfo: req.session.user });
 });
 
+
+
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(500).send({ error: "Could not log out" });
@@ -259,6 +263,19 @@ app.get("/vehicle-data", async (req, res) => {
   } catch (error) {
     console.error("Error fetching vehicle data:", error);
     res.status(500).json({ message: "Error fetching vehicles", error });
+  }
+});
+
+app.get("/vehicle-data/:id", async (req, res) => {
+  try {
+    const vehicle = await Vehicle.findById(req.params.id);
+    if (!vehicle) {
+      return res.status(404).json({ message: "Vehicle not found" });
+    }
+    res.json(vehicle);  // Send back the vehicle data
+  } catch (error) {
+    console.error("Error fetching vehicle data:", error);
+    res.status(500).json({ message: "Error fetching vehicle data", error });
   }
 });
 
