@@ -236,7 +236,7 @@ app.get("/logout", (req, res) => {
 app.post("/vehicle-data", async (req, res) => {
   try {
     const vehicle = new Vehicle({
-      userId:req.body.userId,
+      userId: req.body.userId,
       vehicleName: req.body.vehicleName,
       vehicleNumber: req.body.vehicleNumber,
       vehicleImage: req.body.vehicleImage,
@@ -288,6 +288,23 @@ app.delete("/vehicle-data/:id", async (req, res) => {
     console.error(err);
     res.status(500).json({ message: "Failed to delete vehicle" });
   }
+});
+
+app.get("/vehicle/:vehicleId/stats", (req, res) => {
+  Vehicle.findById(req.params.vehicleId)
+    .then((vehicle) => {
+      if (!vehicle) {
+        return console.log("Vehicle Not Found!!");
+      }
+      FuelLog.find({ vehicleId: req.params.vehicleId })
+      .then((logs) => {
+        res.json({ vehicleNumber: vehicle.vehicleNumber, logs });
+      });
+    })
+    .catch((error) => {
+      console.log("Error fetching vehicle logs:", error);
+      res.status(500).json({ message: "Internal server error" });
+    });
 });
 
 app.listen(config.port, config.host, () => {
