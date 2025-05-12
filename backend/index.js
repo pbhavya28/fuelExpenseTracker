@@ -192,7 +192,7 @@ app.get("/logout", (req, res) => {
 app.post("/vehicle-data", async (req, res) => {
   try {
     const vehicle = new Vehicle({
-      userId:req.body.userId,
+      userId: req.body.userId,
       vehicleName: req.body.vehicleName,
       vehicleNumber: req.body.vehicleNumber,
       vehicleImage: req.body.vehicleImage,
@@ -232,6 +232,7 @@ app.delete("/vehicle-data/:id", async (req, res) => {
     res.status(500).json({ message: "Failed to delete vehicle" });
   }
 });
+
 
 app.listen(config.port, config.host, () => {
   console.log(`Server running on ${config.host}:${config.port}`);
