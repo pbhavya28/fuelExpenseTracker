@@ -91,7 +91,7 @@ For Login Page Credentials :
 
 ## Tech Stack
 
-**Client:** Vue, Bootstrap
+**Client:** Vue, HTML, CSS, Bootstrap
 
 **Server:** Node JS, Express JS, MongoDB + Mongoose
 
