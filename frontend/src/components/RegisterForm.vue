@@ -1,8 +1,11 @@
-
 <template>
   <div class="register-wrapper">
     <div class="left-side">
-      <img src="../assets/images/image.png" alt="Register visual" class="register-image" />
+      <img
+        src="../assets/images/image.png"
+        alt="Register visual"
+        class="register-image"
+      />
     </div>
 
     <div class="right-side">
@@ -22,12 +25,22 @@
 
           <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="email" v-model="user.email" class="form-control" required />
+            <input
+              type="email"
+              v-model="user.email"
+              class="form-control"
+              required
+            />
           </div>
 
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input type="password" v-model="user.password" class="form-control" required />
+            <input
+              type="password"
+              v-model="user.password"
+              class="form-control"
+              required
+            />
           </div>
 
           <button type="submit" class="btn custom-btn w-100">Register</button>
@@ -39,7 +52,9 @@
 
         <p class="mt-3 text-center">
           Already have an account?
-          <router-link to="/login" class="register-link">Login here</router-link>
+          <router-link to="/login" class="register-link"
+            >Login here</router-link
+          >
         </p>
       </div>
     </div>
@@ -109,7 +124,7 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #D99872;
+  background-color: #d99872;
   padding: 2rem;
   overflow: hidden;
 }
