@@ -125,7 +125,6 @@ app.get("/fuel-log/:vehicleId", async (req, res) => {
 
 
 
-
 app.post("/data", async (req, res) => {
   try {
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
