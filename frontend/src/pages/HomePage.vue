@@ -139,9 +139,11 @@ const logout = async () => {
 <style scoped>
 .container-fluid {
   background-color: #d99872;
+  /* background-color: white; */
   color: #544740;
   min-height: 90vh;
   overflow: hidden;
+  border-radius: 25px;
 }
 
 .text-heading {
@@ -168,8 +170,9 @@ const logout = async () => {
 
 .card {
   background-color: #fff;
+  /* background-color: #B66E4C; */
   border-left: 5px solid #544740;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 15px;
 }
 
