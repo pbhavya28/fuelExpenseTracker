@@ -1,8 +1,8 @@
 <template>
-  <div class="container mt-5">
+  <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <button class="backbtn" @click="goBack">← Back</button>
-      <h3>Add Fuel Log for {{ vehicle.vehicleName }}</h3>
+      <button class="btn backbtn" @click="goBack">← Back</button>
+      <h3>Add Fuel Log for <span> {{ vehicle.vehicleName }} </span></h3>
       <div style="width: 90px"></div>
     </div>
 
@@ -175,9 +175,12 @@ const goBack = () => {
   border: 1px solid #D99872; 
 }
 
+span{
+  color: #ffffff;
+}
 
 h3 {
-  color: #544740 
+  color: black; 
 }
 
 .btn-outline-primary {
@@ -234,11 +237,16 @@ outline: none !important;
 background-color: #544740; 
 color: #ffffff;
 border: none;
-
 font-size: 16px;
 border-radius: 5px;
 cursor: pointer;
 transition: background-color 0.3s;
+}
+
+.backbtn:hover {
+    background-color: #B66E4C;
+    color: white;
+    border: 1px solid #544740;
 }
 
 .alert-success {

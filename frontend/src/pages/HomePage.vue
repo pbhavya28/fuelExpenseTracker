@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2 class="text-heading">Welcome, {{ user.firstName }}!</h2>
+      <h2 class="text-heading">Welcome, <span class="name"> {{ user.firstName }}</span> !</h2>
       <button class="btn btn-light" @click="logout">Logout</button>
     </div>
 
@@ -150,9 +150,12 @@ const logout = async () => {
   color: #544740;
   font-weight: bold;
 }
+.name{
+  color: whitesmoke;
+}
 
 .btn-light:hover {
-  background-color: #544740;
+  background-color: red;
   color: white;
 }
 

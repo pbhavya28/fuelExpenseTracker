@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <button class="btn btn-outline-secondary backbtn" @click="goBack">← Back</button>
     </div>
@@ -127,6 +127,8 @@ const submitVehicle = async () => {
   margin: 0;
   overflow: hidden;
   background-color: #d99872;
+  border: 1px solid transparent;
+  border-radius: 10px;
 }
 .card {
   margin: auto;
@@ -140,6 +142,7 @@ const submitVehicle = async () => {
   font-weight: 500;
   text-align: center;
   margin-top: 15px;
+  font-size: 40px;
 }
 .btn {
   background-color: #544740;
