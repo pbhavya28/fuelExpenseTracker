@@ -78,7 +78,7 @@ cd frontend
 npm i
 npm run dev
 ```
-3. Go to http://localhost:3030 for Output.
+3. Go to http://localhost:5173 for Output.
 
 ##
 
