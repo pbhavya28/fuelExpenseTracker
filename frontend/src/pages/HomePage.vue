@@ -1,12 +1,12 @@
 <template>
-  <div class="container-fluid min-vh-100 p-4">
+  <div class="container-fluid p-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h3 class="text-primary">Welcome, {{ user.firstName }}!</h3>
-      <button class="btn btn-outline-danger" @click="logout">Logout</button>
+      <h2 class="text-heading">Welcome, {{ user.firstName }}!</h2>
+      <button class="btn btn-light" @click="logout">Logout</button>
     </div>
 
     <div class="d-flex justify-content-start mb-4">
-      <button class="btn btn-success" @click="addVehicle">+ Add Vehicle</button>
+      <button class="btn btn-add" @click="addVehicle">+ Add Vehicle</button>
     </div>
 
     <div class="row g-4">
@@ -18,8 +18,8 @@
             <img
               :src="vehicle.vehicleImage"
               alt="Vehicle"
-              class="img-thumbnail me-3"
-              style="width: 120px; height: 80px; object-fit: cover"
+              class="img-thumbnail me-3 vehicle-img"
+              style="width: 155px; height: 100px; object-fit: cover"
             />
 
             <div>
@@ -31,7 +31,7 @@
           <div class="ms-auto d-flex flex-column align-items-end">
             <div class="mb-2">
               <button
-                class="btn btn-primary btn-sm me-2"
+                class="btn btn-action btn-sm me-2"
                 @click="goToStats(vehicle._id)"
               >
                 View Stats
@@ -44,7 +44,7 @@
               </button>
             </div>
             <button
-              class="btn btn-outline-danger btn-sm "
+              class="btn btn-outline-danger btn-sm"
               @click="removeVehicle(vehicle._id)"
             >
               Remove Vehicle
@@ -138,12 +138,83 @@ const logout = async () => {
 
 <style scoped>
 .container-fluid {
-  background-color: aliceblue;
+  background-color: #d99872;
+  /* background-color: white; */
+  color: #544740;
+  min-height: 90vh;
+  overflow: hidden;
+  border-radius: 25px;
 }
 
-img.object-fit-cover {
+.text-heading {
+  color: #544740;
+  font-weight: bold;
+}
+
+.btn-light:hover {
+  background-color: #544740;
+  color: white;
+}
+
+.btn-add {
+  background-color: #544740;
+  color: #fff;
+  border: none;
+}
+
+.btn-add:hover {
+  background-color: #B66E4C;
+  color: white;
+  border: 1px solid #544740;
+}
+
+.card {
+  background-color: #fff;
+  /* background-color: #B66E4C; */
+  border-left: 5px solid #544740;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.vehicle-img {
+  width: 120px;
+  height: 80px;
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  border-radius: 5px;
+}
+
+.btn-action {
+  background-color: #544740;
+  color: #fff;
+  border: none;
+  padding: 4px 10px;
+  font-size: 0.875rem;
+}
+
+.btn-action:hover {
+  background-color: #B66E4C;
+  color: white;
+  border: 1px solid #544740;
+}
+
+.btn-secondary {
+  background-color: #a38675;
+  border: none;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #C69B82	;
+  color: #544740;
+  border: 1px solid #a38675;
+}
+
+.btn-outline-danger:hover {
+  background-color: #a94442;
+  color: #fff;
+}
+
+.text-muted {
+  color: #6c5b51 !important;
 }
 </style>

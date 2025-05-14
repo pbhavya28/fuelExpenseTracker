@@ -1,59 +1,60 @@
 <template>
   <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <button class="btn btn-outline-secondary" @click="goBack">← Back</button>
-      <h4 class="mb-0 text-primary">Add Vehicle</h4>
-      <div style="width: 90px"></div>
+      <button class="btn btn-outline-secondary backbtn" @click="goBack">← Back</button>
     </div>
-    <form @submit.prevent="submitVehicle" class="card p-4 shadow">
-      <div class="mb-3">
-        <label for="vehicleName" class="form-label">Vehicle Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="vehicleName"
-          v-model="vehicle.vehicleName"
-          required
-        />
-      </div>
+    <div class="card shadow">
+      <h4 class="mb-0 display-4">Add Vehicle</h4>
+      <form @submit.prevent="submitVehicle" class=" p-4 ">
+        <div class="mb-3">
+          <label for="vehicleName" class="form-label">Vehicle Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="vehicleName"
+            v-model="vehicle.vehicleName"
+            required
+          />
+        </div>
 
-      <div class="mb-3">
-        <label for="vehicleNumber" class="form-label">Vehicle Number</label>
-        <input
-          type="text"
-          class="form-control"
-          id="vehicleNumber"
-          v-model="vehicle.vehicleNumber"
-          required
-        />
-      </div>
+        <div class="mb-3">
+          <label for="vehicleNumber" class="form-label">Vehicle Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="vehicleNumber"
+            v-model="vehicle.vehicleNumber"
+            required
+          />
+        </div>
 
-      <div class="mb-3">
-        <label for="vehicleImage" class="form-label">Vehicle Image</label>
-        <input
-          type="file"
-          class="form-control"
-          id="vehicleImage"
-          @change="handleImageUpload"
-        />
-      </div>
+        <div class="mb-3">
+          <label for="vehicleImage" class="form-label">Vehicle Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="vehicleImage"
+            @change="handleImageUpload"
+          />
+        </div>
 
-      <div class="mb-3">
-        <label for="fuelType" class="form-label">Fuel Type</label>
-        <select
-          class="form-select"
-          id="fuelType"
-          v-model="vehicle.fuelType"
-          required
-        >
-          <option disabled value="">Select fuel type</option>
-          <option value="petrol">Petrol</option>
-          <option value="diesel">Diesel</option>
-        </select>
-      </div>
+        <div class="mb-3">
+          <label for="fuelType" class="form-label">Fuel Type</label>
+          <select
+            class="form-select"
+            id="fuelType"
+            v-model="vehicle.fuelType"
+            required
+          >
+            <option disabled value="">Select fuel type</option>
+            <option value="petrol">Petrol</option>
+            <option value="diesel">Diesel</option>
+          </select>
+        </div>
 
-      <button type="submit" class="btn btn-primary w-100">Add Vehicle</button>
-    </form>
+        <button type="submit" class="btn w-100">Add Vehicle</button>
+      </form>
+    </div>
 
     <div v-if="message" class="alert alert-info mt-4 text-center">
       {{ message }}
@@ -88,7 +89,7 @@ onMounted(() => {
 });
 
 const goBack = () => {
-  router.push('/home');
+  router.push("/home");
 };
 
 const handleImageUpload = (e) => {
@@ -122,10 +123,37 @@ const submitVehicle = async () => {
 
 <style scoped>
 .container {
-  max-width: 600px;
+  height: 85vh;
+  margin: 0;
+  overflow: hidden;
+  background-color: #d99872;
 }
 .card {
+  margin: auto;
   border-radius: 10px;
+  width: 450px;
+  height: auto;
   background-color: #f9f9f9;
+}
+.display-4 {
+  color: #544740;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 15px;
+}
+.btn {
+  background-color: #544740;
+  color: white;
+}
+.btn:hover {
+  background-color: peru;
+}
+.backbtn{
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.backbtn:hover{
+  background-color: wheat;
+  color: black;
 }
 </style>
