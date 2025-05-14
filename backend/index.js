@@ -7,7 +7,8 @@ const config = require("./config.json");
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use(
   cors({
@@ -87,6 +88,7 @@ const FuelLog = mongoose.model(
   })
 );
  
+// add Fuel log 
 app.post("/fuel-log", async (req, res) => {
   try {
     const { vehicleId, liters, pricePerLiter, distance, date } = req.body;
@@ -112,6 +114,7 @@ app.post("/fuel-log", async (req, res) => {
   }
 });
  
+// get fuel log
 app.get("/fuel-log/:vehicleId", async (req, res) => {
   try {
     const { vehicleId } = req.params;
@@ -289,6 +292,8 @@ app.delete("/vehicle-data/:id", async (req, res) => {
     res.status(500).json({ message: "Failed to delete vehicle" });
   }
 });
+
+// Getting all logs 
 
 app.get("/vehicle/:vehicleId/stats", (req, res) => {
   Vehicle.findById(req.params.vehicleId)
